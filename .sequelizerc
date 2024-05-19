@@ -1,0 +1,21 @@
+const fs = require('fs');
+const path = require('path');
+const data = require(path.resolve('config.js'));
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+fs.writeFileSync('config.json', JSON.stringify(data), (err) => {
+  if (err) {
+    return console.log(err);
+  }
+
+  console.log('file written');
+});
+
+module.exports = {
+  config: path.resolve('config.json'),
+  'models-path': path.resolve('models'),
+  'seeders-path': path.resolve('seeders'),
+  'migrations-path': path.resolve('migrations'),
+};
